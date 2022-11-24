@@ -1,0 +1,34 @@
+
+
+body{
+background-color:#272b30 ;
+color: #aaa;
+}
+
+.game span{
+    background: #7a8288;
+    font-size: small;
+    color: #32383e;;
+}
+
+.game{
+    background: #32383e;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0,25);
+    transition: all .5s;
+    
+}
+.game:hover{
+    transform: scale(1.1);
+}
+  
+
+a , a:hover{
+    text-decoration: none;
+    color: #aaa;
+}
+.loading{
+    height: 100vh;
+}
+li{
+    list-style: none;
+}

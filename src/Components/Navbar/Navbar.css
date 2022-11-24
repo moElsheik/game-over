@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Xanh+Mono:ital@1&display=swap');
+
+.navbar-brand-img{
+    width: 70px;
+    filter: drop-shadow(1px 1px 3px #1983e6ce);
+    
+   
+}
+.navbar-brand{
+    font-family: Xanh Mono, monospace;
+    font-size: 1.25rem;
+}
+.navbar{
+
+    background-color: #272b30;
+}
