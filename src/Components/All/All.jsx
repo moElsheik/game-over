@@ -3,13 +3,17 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 export default function All() {
-
+  const [ loading ,setLoading ] = useState(false)
   const [ allGames ,setAllGames ] = useState(null)
-
+  const [ count ,setCount ] = useState(100)
+  function recount() {
+    setCount( count+100)
+  }
 
 
 
 const getApiReq = async () => {
+  setLoading(true)
 	const config = {
 		headers: {
 			'X-RapidAPI-Key': 'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
@@ -22,6 +26,7 @@ const getApiReq = async () => {
 		'https://free-to-play-games-database.p.rapidapi.com/api/games',config
 	);
 	setAllGames(data)
+  setLoading(false)
 };
 
 useEffect(function(){
@@ -32,7 +37,7 @@ useEffect(function(){
   return <>
  <div className="container">
  <div className=' row g-3'>
-    {allGames? allGames.map((game ,i)=> 
+    {loading === false && allGames? (allGames.slice(0,count)).map((game ,i)=> 
 
 <div key={i} className='col-3  '>
 <Link to={`/game-details/${game.id}`} >
@@ -50,7 +55,7 @@ useEffect(function(){
         <i class="fa-solid fa-square-plus"></i>
           <div>
             <span className='m-2  rounded-5 px-2 light-gray' >{game.genre}</span>
-            {game.platform =="PC (Windows)"?  <i className="fa-brands fa-windows"></i>:<i className="fa-solid fa-window-maximize"></i>}
+            {game.platform ==="PC (Windows)"?  <i className="fa-brands fa-windows"></i>:<i className="fa-solid fa-window-maximize"></i>}
             
 
           </div>
@@ -58,8 +63,10 @@ useEffect(function(){
         </div>
       </div>
       </Link>
+     
      </div>
-
+ 
+ 
     )
     
    
@@ -73,7 +80,7 @@ useEffect(function(){
   </div>
   
  </div>
-  
-  
+  <div className='text-center my-4'><button className="btn btn-outline-secondary"  onClick={recount} > See More</button> </div>
+ 
   </>
 }

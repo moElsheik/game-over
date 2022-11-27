@@ -5,7 +5,7 @@ import Platform from "./Components/Platform/Platform";
 import Sortby from "./Components/Sortby/Sortby";
 import Categories from "./Components/Categories/Categories";
 import Login from "./Components/Login/Login";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {  createHashRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "./Components/Layout/Layout";
 import Notfound from "./Components/Notfound/Notfound";
 import Joinfree from "./Components/Joinfree/Joinfree";
@@ -26,7 +26,11 @@ function App() {
   
  }
 
+ 
+
   const [userData, setUserData] = useState(null);
+
+  
 
   function saveUserData() {
     let incodedData = localStorage.getItem("tokenData");
@@ -35,27 +39,43 @@ function App() {
     setUserData(decodedData);
   }
 
-  const router = createBrowserRouter([
+  function ProtectedRoute(props) {
+    
+    if (userData === null && localStorage.getItem('tokenData')=== null) {
+     return <>
+     
+     <Navigate to="/Login"/>
+    
+     </>
+    }else{
+     return <>
+      {props.children}
+     
+     </>
+    }
+    }
+
+  const router = createHashRouter([
     {
       path: "/",
       element: <Layout userData={userData} logOut={logOut}/>,
       children: [
-        { path: "/", element: <Home />  },
+        { path: "/", element:<ProtectedRoute><Home /></ProtectedRoute>   },
         { path: "joinfree", element: <Joinfree />  },
-        { path: "all", element:<All />  },
-        { path: "platform", element:<Platform /> ,children:[
+        { path: "all", element:<ProtectedRoute><All /></ProtectedRoute>  },
+        { path: "platform", element:<ProtectedRoute><Platform /> </ProtectedRoute>,children:[
           {path:":params"},
          
         ] },
-        { path: "sort-by", element:<Sortby />,children:[
+        { path: "sort-by", element:<ProtectedRoute><Sortby /></ProtectedRoute>,children:[
           {path:":params"},
         ] },
-        { path: "categories", element:<Categories />,children:[
+        { path: "categories", element:<ProtectedRoute><Categories /></ProtectedRoute>,children:[
           {path:":params"},
         ] },
         { path: "login", element: <Login saveUserData={saveUserData}  /> },
         { path: "/", element: <Joinfree /> },
-        { path: "game-details", element: <Gamedetails /> ,children:[
+        { path: "game-details", element: <ProtectedRoute><Gamedetails /></ProtectedRoute> ,children:[
           {path:":params"},
         ]},
         { path: "*", element: <Notfound /> },

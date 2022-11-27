@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 
 export default function Categories() {
+  const [ loading ,setLoading ] = useState(false)
   const [ allGames ,setAllGames ] = useState(null)
   
 
@@ -14,6 +15,7 @@ export default function Categories() {
 
 
 const getApiReq = async () => {
+  setLoading(true)
 	const config = {
 		headers: {
 			'X-RapidAPI-Key': 'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
@@ -26,6 +28,7 @@ const getApiReq = async () => {
 		`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${params}`,config
 	);
 	setAllGames(data)
+  setLoading(false)
 };
 
 useEffect(function(){
@@ -36,7 +39,7 @@ useEffect(function(){
   return <>
  <div className="container">
  <div className=' row g-3'>
-    {allGames? allGames.map((game ,i)=> <div key={i} className='col-3  '>
+    {loading == false && allGames? allGames.map((game ,i)=> <div key={i} className='col-3  '>
     <Link to={`/game-details/${game.id}`} >
       <div className='game rounded-2 '>
         <img className=' w-100' src={game.thumbnail} alt=" gameimage" />

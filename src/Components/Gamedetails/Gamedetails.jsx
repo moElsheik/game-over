@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
+
 
 
 export default function Gamedetails() {
@@ -28,6 +29,7 @@ useEffect(function(){
 
 
 
+
   return (
     <>
     {game !== null ? 
@@ -39,6 +41,8 @@ useEffect(function(){
             <img className='w-100 rounded-3' src={game.thumbnail} alt="" />
           </div>
           <span> FREE</span>
+          
+          
         </div>
 
         <div className="col-md-6">
