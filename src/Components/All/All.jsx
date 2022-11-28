@@ -1,14 +1,34 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 export default function All() {
   const [ loading ,setLoading ] = useState(false)
   const [ allGames ,setAllGames ] = useState(null)
   const [ count ,setCount ] = useState(100)
+
+
+  const[windowWidth ,setWindowWidth] =useState(window.innerWidth)
+  const [ letterscount ,setLetterscount ] = useState(Math.floor(windowWidth/100))
+
   function recount() {
     setCount( count+100)
   }
+function changeLetterscount() {
+  if (windowWidth >= 992){
+    setWindowWidth(window.innerWidth)
+    setLetterscount(Math.floor(windowWidth/100))
+  }else if (windowWidth <= 991 &&windowWidth >= 765 ) {
+    setLetterscount(6)
+   }
+  
+}
+useEffect(()=>{
+ 
+  window.addEventListener('resize',changeLetterscount)
+
+})
 
 
 
@@ -29,8 +49,11 @@ const getApiReq = async () => {
   setLoading(false)
 };
 
+
 useEffect(function(){
-  getApiReq()
+  
+
+    getApiReq()
 },[]);
 
 
@@ -39,13 +62,13 @@ useEffect(function(){
  <div className=' row g-3'>
     {loading === false && allGames? (allGames.slice(0,count)).map((game ,i)=> 
 
-<div key={i} className='col-3  '>
+<div key={i} className='col-md-3  '>
 <Link to={`/game-details/${game.id}`} >
       <div className='game rounded-2 '>
         <img className=' w-100' src={game.thumbnail} alt=" gameimage" />
         <div className=' p-2 gameData'>
           <div className='d-flex justify-content-between'>
-          <h3  >{game.title.length > 12 ?game.title.slice(0 ,12)+"...":game.title }</h3>
+          <h5  >{game.title.slice(0 ,letterscount)}</h5>
         <p className='ms-auto text-white bg-primary px-2 rounded-3 fs-6'> FREE</p>
           </div>
 

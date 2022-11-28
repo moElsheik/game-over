@@ -36,7 +36,7 @@ useEffect(function(){
       <div className='container'>
         <div className="row">
       
-      <div className="col-md-4">
+      <div className="col-md-5">
           <div>
             <img className='w-100 rounded-3' src={game.thumbnail} alt="" />
           </div>
@@ -45,7 +45,7 @@ useEffect(function(){
           
         </div>
 
-        <div className="col-md-6">
+        <div className="col-md-7">
           <div>
             <h2>{game.title}</h2>
             <h4>{`About ${game.title}`}</h4>

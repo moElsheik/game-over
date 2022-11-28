@@ -87,11 +87,11 @@ async function sendToApi() {
    <div >
    <div className='container py-3'>
     <div className='row g-0 '>
-      <div className='col-6'>
-        <img className=' w-100' src={gaming} alt="" />
+      <div className='col-md-6'>
+        <img className=' w-100 h-100' src={gaming} alt="" />
       </div>
 
-      <div className='col-6  joinDiv' >
+      <div className='col-md-6  joinDiv' >
         <div className='text-center container'>
           
           <h3 className='p-3'>Create My Account!</h3>
