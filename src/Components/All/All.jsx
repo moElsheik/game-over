@@ -10,7 +10,7 @@ export default function All() {
 
 
   const[windowWidth ,setWindowWidth] =useState(window.innerWidth)
-  const [ letterscount ,setLetterscount ] = useState(Math.floor(windowWidth/100))
+  const [ letterscount ,setLetterscount ] = useState()
 
   function recount() {
     setCount( count+100)
