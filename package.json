@@ -1,7 +1,7 @@
 {
   "name": "gameoverapp",
   "version": "0.1.0",
-  "homepage": "https://moElsheik.github.io/game-over",
+  "homepage": "https://github.com/moElsheik/game-over.git",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
