@@ -66,7 +66,8 @@ function submitData(e) {
 }
 
 async function sendToApi() {
-  let {data} = await axios.post(  'https://route-egypt-api.herokuapp.com/signup' , user);
+  let {data} = await axios.post(  'https://movies-api.routemisr.com/signup' , user);
+  
  
    if (data.message === "success") {
    navigate('/login')
@@ -126,7 +127,7 @@ async function sendToApi() {
 
               </div>
               <div className="col-12">
-             {spin=== false?  <button type="submit" className="btn   w-100 border border-3 text-white border-dark">Create Account</button>:  <div  className=" border border-3  w-100  bg-success border-dark p-1"><i class="fa-solid fa-spinner fa-spin fs-3"></i></div> }
+             {spin=== false?  <button type="submit" className="btn   w-100 border border-3 text-white border-dark">Create Account</button>:  <div  className=" border border-3  w-100  bg-success border-dark p-1"><i className="fa-solid fa-spinner fa-spin fs-3"></i></div> }
               </div>
          </div>
 

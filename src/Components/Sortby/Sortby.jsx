@@ -61,7 +61,7 @@ useEffect(function(){
   return <>
  <div className="container">
  <div className=' row g-3'>
-    {loading == false && allGames? allGames.map((game ,i)=> <div key={i} className='col-md-3  '>
+    {loading === false && allGames? allGames.map((game ,i)=> <div key={i} className='col-md-3  '>
     <Link to={`/game-details/${game.id}`} >
       <div className='game rounded-2 '>
         <img className=' w-100' src={game.thumbnail} alt=" gameimage" />

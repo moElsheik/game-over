@@ -27,7 +27,7 @@ useEffect(()=>{
  
   window.addEventListener('resize',changeLetterscount)
 
-})
+},[])
 
   
 

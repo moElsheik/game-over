@@ -36,7 +36,7 @@ function submitData(e) {
   let validation = validateData()
   
   
- if (validation.error != undefined) {
+ if (validation.error !== undefined) {
   
   setJoiErors(validation.error.details);
   setSpin(false)
@@ -64,9 +64,9 @@ function submitData(e) {
 }
 
 async function sendToApi() {
-  let {data} = await axios.post(  'https://route-egypt-api.herokuapp.com/signin' , user);
+  let {data} = await axios.post(  'https://movies-api.routemisr.com/signin' , user);
  
-   if (data.message == "success") {
+   if (data.message === "success") {
     localStorage.setItem("tokenData"  ,  data.token)
     saveUserData()
    navigate('/')
@@ -103,7 +103,7 @@ async function sendToApi() {
              
               <div className="col-12">
                 <input onChange={getUserData}type="email" className="form-control bg-dark border-0 text-white" placeholder="Email Address" id='email'/>
-                { joiErors? <div className=' text-danger'> {joiErors.filter( (error) => error.context.label =='email')[0]?.message} </div> :"" }
+                { joiErors? <div className=' text-danger'> {joiErors.filter( (error) => error.context.label ==='email')[0]?.message} </div> :"" }
 
               </div>
             

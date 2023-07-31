@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
+
 
 export default function All() {
   const [ loading ,setLoading ] = useState(false)
@@ -16,12 +16,16 @@ export default function All() {
     setCount( count+100)
   }
 function changeLetterscount() {
+  setWindowWidth(window.innerWidth)
+
   if (windowWidth >= 992){
-    setWindowWidth(window.innerWidth)
     setLetterscount(Math.floor(windowWidth/100))
   }else if (windowWidth <= 991 &&windowWidth >= 765 ) {
-    setLetterscount(6)
+    setLetterscount(8)
+   }else{
+    setLetterscount(20)
    }
+
   
 }
 useEffect(()=>{
